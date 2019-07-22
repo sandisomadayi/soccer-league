@@ -10,38 +10,40 @@ public class League {
 //        player1.firstName = "sandiso";
 //        player2.firstName = "sandman";
 
-        Player[] thePlayers = {player1, player2, player3};
+        Player[] firstTeamPlayers = {player1, player2, player3};
 
         Team team1 = new Team();
         Team team2 = new Team();
         Team team3 = new Team();
 
-        team1.teamName = "Chiefs";
-        team2.teamName = "Pirates";
-        team3.teamName = "Sundowns";
+        team1.setTeamName("Chiefs");
+        team2.setTeamName("Pirates");
+        team3.setTeamName("Sundowns");
 
-        team1.teamPlayers = thePlayers;
-        team2.teamPlayers = new  Player[3];
+        team1.setTeamPlayers(firstTeamPlayers);
 
-        team2.teamPlayers[0] = new Player("Robert", "Service", 15);
-        team2.teamPlayers[1] = new Player("Robbie", "Burns", 14);
-        team2.teamPlayers[2] = new Player("Rafael", "Sabatini", 11);
+        Player player4 = new Player("Robert", "Service", 15);
+        Player player5 = new Player("Robbie", "Burns", 14);
+        Player player6 = new Player("Rafael", "Sabatini", 11);
+
+        Player[] secondTeamPlayers = {player4, player5, player6};
+        team2.setTeamPlayers(secondTeamPlayers);
 
         Team[] teams = {team1, team2, team3};
 
         Game currentGame = new Game();
-        currentGame.homeTeam = team1;
-        currentGame.awayTeam = team2;
+        currentGame.setHomeTeam(team1);
+        currentGame.setAwayTeam(team2);
 
         Goal firstGoal = new Goal();
 
-        firstGoal.thePlayer = currentGame.homeTeam.teamPlayers[2];
-        firstGoal.theTeam = currentGame.homeTeam;
-        firstGoal.theTime = 55;
+        firstGoal.setThePlayer(secondTeamPlayers[2]);
+        firstGoal.setTheTeam(currentGame.getAwayTeam());
+        firstGoal.setTheTime(55);
 
         Goal[] theGoals = {firstGoal};
-        currentGame.goals = theGoals;
+        currentGame.setGoals(theGoals);
         
-        System.out.println("Goal scored after " + currentGame.theGoals[0].theTime + " minutes by " + currentGame.theGoals[0].thePlayer.playerName + " of " + currentGame.theGoals[0].theTeam.teamName);
+        System.out.println("Goal scored after " + firstGoal.getTheTime() + " minutes by " + player5.getFirstName() + " of " + team2.getTeamName());
     }
 }

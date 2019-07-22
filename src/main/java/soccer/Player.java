@@ -1,10 +1,9 @@
 package soccer;
 
 public class Player {
-    public String firstName;
-    public String lastName;
-    public int jerseyNumber;
-    public String teamName;
+    private String firstName;
+    private String lastName;
+    private int jerseyNumber;
 
     public Player(String firstName, String lastName, int jerseyNumber) {
         this.firstName = firstName;
