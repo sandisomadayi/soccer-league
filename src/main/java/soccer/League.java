@@ -41,5 +41,7 @@ public class League {
 
         Goal[] theGoals = {firstGoal};
         currentGame.goals = theGoals;
+        
+        System.out.println("Goal scored after " + currentGame.theGoals[0].theTime + " minutes by " + currentGame.theGoals[0].thePlayer.playerName + " of " + currentGame.theGoals[0].theTeam.teamName);
     }
 }
