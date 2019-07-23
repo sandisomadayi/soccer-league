@@ -12,28 +12,23 @@ public class League {
 
         Player[] firstTeamPlayers = {player1, player2, player3};
 
-        Team team1 = new Team();
-        Team team2 = new Team();
-        Team team3 = new Team();
+        Team[] teams = createTeams();
+        Game[] games = createGames(teams);
 
-        team1.setTeamName("Chiefs");
-        team2.setTeamName("Pirates");
-        team3.setTeamName("Sundowns");
+        teams[0].setTeamName("Chiefs");
+        teams[1].setTeamName("Pirates");
+        teams[2].setTeamName("Sundowns");
 
-        team1.setTeamPlayers(firstTeamPlayers);
+        teams[0].setTeamPlayers(firstTeamPlayers);
 
         Player player4 = new Player("Robert", "Service", 15);
         Player player5 = new Player("Robbie", "Burns", 14);
         Player player6 = new Player("Rafael", "Sabatini", 11);
 
         Player[] secondTeamPlayers = {player4, player5, player6};
-        team2.setTeamPlayers(secondTeamPlayers);
+//        team2.setTeamPlayers(secondTeamPlayers);
 
-        Team[] teams = {team1, team2, team3};
-
-        Game currentGame = new Game();
-        currentGame.setHomeTeam(team1);
-        currentGame.setAwayTeam(team2);
+        Game currentGame = games[0];
 
         Goal firstGoal = new Goal();
 
@@ -44,6 +39,25 @@ public class League {
         Goal[] theGoals = {firstGoal};
         currentGame.setGoals(theGoals);
         
-        System.out.println("Goal scored after " + firstGoal.getTheTime() + " minutes by " + player5.getFirstName() + " of " + team2.getTeamName());
+        System.out.println("Goal scored after " + firstGoal.getTheTime() + " minutes by " + player5.getFirstName() + " of " + teams[1].getTeamName());
+    }
+    public static Team[] createTeams() {
+        Team team1 = new Team();
+        Team team2 = new Team();
+        Team team3 = new Team();
+
+        Team[] teams = {team1, team2, team3};
+
+        return teams;
+    }
+    public static Game[] createGames(Team[] teams) {
+        Game game = new Game();
+
+        game.setAwayTeam(teams[1]);
+        game.setHomeTeam(teams[0]);
+
+        Game[] games = {game};
+
+        return games;
     }
 }
