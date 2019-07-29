@@ -12,38 +12,53 @@ public class League {
 
         Player[] firstTeamPlayers = {player1, player2, player3};
 
-        Team team1 = new Team();
-        Team team2 = new Team();
-        Team team3 = new Team();
+        Team[] teams = createTeams();
+        Game[] games = createGames(teams);
 
-        team1.setTeamName("Chiefs");
-        team2.setTeamName("Pirates");
-        team3.setTeamName("Sundowns");
+        teams[0].teamName =("Chiefs");
+        teams[1].teamName = ("Pirates");
+        teams[2].teamName = ("Sundowns");
 
-        team1.setTeamPlayers(firstTeamPlayers);
+        teams[0].teamPlayers = (firstTeamPlayers);
 
         Player player4 = new Player("Robert", "Service", 15);
         Player player5 = new Player("Robbie", "Burns", 14);
         Player player6 = new Player("Rafael", "Sabatini", 11);
 
         Player[] secondTeamPlayers = {player4, player5, player6};
-        team2.setTeamPlayers(secondTeamPlayers);
+//        team2.setTeamPlayers(secondTeamPlayers);
 
-        Team[] teams = {team1, team2, team3};
-
-        Game currentGame = new Game();
-        currentGame.setHomeTeam(team1);
-        currentGame.setAwayTeam(team2);
+        Game currentGame = games[0];
+        int goalsScored = (int) (Math.random() * 7);
+        Goal[] goals = new Goal [goalsScored];
 
         Goal firstGoal = new Goal();
 
-        firstGoal.setThePlayer(secondTeamPlayers[2]);
-        firstGoal.setTheTeam(currentGame.getAwayTeam());
-        firstGoal.setTheTime(55);
+        firstGoal.thePlayer = (secondTeamPlayers[2]);
+        firstGoal.theTeam = (currentGame.awayTeam);
+        firstGoal.theTime = (55);
 
-        Goal[] theGoals = {firstGoal};
-        currentGame.setGoals(theGoals);
-        
-        System.out.println("Goal scored after " + firstGoal.getTheTime() + " minutes by " + player5.getFirstName() + " of " + team2.getTeamName());
+        currentGame.goals = (goals);
+
+        System.out.println("Goal scored after " + firstGoal.theTime + " minutes by " + player6.getFirstName() + " " + player6.getLastName() + " of " + teams[1].teamName);
+    }
+    public static Team[] createTeams() {
+        Team team1 = new Team();
+        Team team2 = new Team();
+        Team team3 = new Team();
+
+        Team[] teams = {team1, team2, team3};
+
+        return teams;
+    }
+    public static Game[] createGames(Team[] teams) {
+        Game game = new Game();
+
+        game.awayTeam = (teams[1]);
+        game.homeTeam = (teams[0]);
+
+        Game[] games = {game};
+
+        return games;
     }
 }
